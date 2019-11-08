@@ -80,3 +80,13 @@ https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Code/Budapest_Cul
 <br/>The cultural venues marked again on the map of Budapest, this time based on the cluster membership. The map can be found in the Notebook:<br/>
 https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Code/Budapest_Cult_Sights.ipynb
 <br/> Not surprisingly, the less frequently visited places were situated far from the city centre, while places from the other three clusters condensed close to the centre of Buda and Pest. Some sights from cluster 4 also fall far from the city centre, that may be the interest of another analysis that aims at how these places could attract more visitors than those that belonged to Cluster 1.<br/>
+
+### Discussion
+#### Recommendations regarding channelling developmental resources
+1. Considering the volume of visits and recommendations, it is crucial to provide enough resources for upkeeping high level of services at cultural sights belongs to Cluster 3 (Castle, Halászbástya).<br/>
+2. Since most of the cultural sights situated in the inner city of Pest and Buda, concentrating on these areas is important, that should cover maintainance of roads, renovation/conservation of historic building and providing welcoming environment (tidy and clean places) should be a priority.<br/>
+3. Distant institutions, places and sights get little attention. Public transportation and advertisement should be improved to connect these places to the centre making them benefit better from tourism. In that regard, sights from cluster 4 falling far from the city centre could be the centre of interest to find out there potential in attracting some attention. <br/>
+#### Recommendations regarding future analysis
+1. Adding data coming from other services beside Foursquare would be important to balance, contrast and compare the results regarding popularity. Also, official data about the number of visitors would be a great addition to the analysis.
+2. Validating that venues belongs to the given neighbourhood and clusters should be recognized as being of paramount importance.
+3. Adding traffic data may explain some assumption of the analysis, especially in connection with the access to the less frequently liked and recommended places. 
