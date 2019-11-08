@@ -36,6 +36,12 @@ import geocoder
 from geopy.geocoders import Nominatim
 import folium # map rendering library
 
+# Importing packages for standardization
+from sklearn.preprocessing import MinMaxScaler
+
+# Importing packages for clustering
+from sklearn.cluster import KMeans
+
 
 # ### <span style="color:dimgray">Scraping wiki page for data about Budapest's Neighbourhoods </span>
 
@@ -125,7 +131,7 @@ df_n['longitude'] = longitude
 df_n
 
 
-# In[16]:
+# In[19]:
 
 
 # Adding credentials for using Foursquare
@@ -137,7 +143,7 @@ LIMIT = 100
 print('Your credentials are stored')
 
 
-# In[9]:
+# In[20]:
 
 
 #Definging function for using API of Foursquare
@@ -193,14 +199,14 @@ df_n_ven = getNearbyVenues(df_n['Neighborhoods'], df_n['latitude'], df_n['longit
 len(df_n_ven)
 
 
-# In[11]:
+# In[22]:
 
 
 pd.options.display.max_rows = 9999
 display(df_n_ven >> group_by(X.Venue_Category) >> summarize(N=n(X.Venue)))
 
 
-# In[22]:
+# In[23]:
 
 
 ven_cat = ['Art Gallery', 
@@ -215,7 +221,7 @@ ven_cat = ['Art Gallery',
            'Theater']
 
 
-# In[23]:
+# In[24]:
 
 
 df_n_ven = df_n_ven[df_n_ven['Venue_Category'].isin(ven_cat)]
@@ -223,14 +229,7 @@ df_n_ven = df_n_ven >> distinct(X.Venue)
 len(df_n_ven)
 
 
-# # Adding credentials again because quota limit for using Foursquare
-# CLIENT_ID = getpass.getpass('Enter your Foursquare CLIENT_ID')
-# CLIENT_SECRET = getpass.getpass('Enter your Foursquare CLIENT_SECRET')
-# VERSION = '20191105'
-# 
-# print('Your credentials are stored')
-
-# In[24]:
+# In[25]:
 
 
 #Defining function for using API of Foursquare
@@ -283,13 +282,13 @@ def getVenuesStat(VenueID):
     return(venues_stat)
 
 
-# In[25]:
+# In[26]:
 
 
 df_n_ven_stat = getVenuesStat(df_n_ven['Venue_ID'])
 
 
-# In[26]:
+# In[27]:
 
 
 df_n_ven = df_n_ven.reset_index(drop=True)
@@ -297,7 +296,7 @@ df_cult_ven = df_n_ven >> inner_join(df_n_ven_stat, by="Venue_ID")
 df_cult_ven >> arrange(X.likes, ascending=False)
 
 
-# In[27]:
+# In[28]:
 
 
 df_cultven_stat = df_cult_ven >> group_by(X.Venue_Category) >> summarize(mean_likes = mean(X.likes), mean_tip = mean(X.tipCount), mean_rating = mean(X.rating)) 
@@ -308,7 +307,7 @@ ax = sns.barplot(x="Venue_Category", y="mean_likes", data=df_cultven_stat, palet
 ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
 
 
-# In[28]:
+# In[29]:
 
 
 df_cultven_stat = df_cultven_stat.sort_values(['mean_tip'], ascending=False).reset_index(drop=True)
@@ -318,7 +317,7 @@ ax = sns.barplot(x="Venue_Category", y="mean_tip", data=df_cultven_stat, palette
 ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
 
 
-# In[29]:
+# In[30]:
 
 
 df_cultven_stat = df_cultven_stat.sort_values(['mean_rating'], ascending=False).reset_index(drop=True)
@@ -328,7 +327,7 @@ ax = sns.barplot(x="Venue_Category", y="mean_rating", data=df_cultven_stat, pale
 ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
 
 
-# In[30]:
+# In[31]:
 
 
 pd.options.display.max_colwidth = 2000
@@ -337,7 +336,7 @@ df_neigh = df_cult_ven >> group_by(X.Neighbourhood) >> summarize(n=n(X.Venue_ID)
 df_neigh.sort_values(by=['n'], ascending=False)
 
 
-# In[41]:
+# In[33]:
 
 
 color_theme = {
@@ -365,13 +364,13 @@ color_dict = color_dict.reset_index()
 color_dict = color_dict.rename(columns={"index": "Neighbourhood", 0: "Color"})
 
 df_cult_ven = df_cult_ven.reset_index(drop=True)
-df_cult_ven = df_cult_ven >> drop(X.Color)
+#df_cult_ven = df_cult_ven >> drop(X.Color)
 df_cult_ven = df_cult_ven >> left_join(color_dict, by='Neighbourhood')
 df_cult_ven['Color'] = df_cult_ven['Color'].fillna('lightgray')
 df_cult_ven
 
 
-# In[42]:
+# In[34]:
 
 
 m = folium.Map(
@@ -391,6 +390,101 @@ for lat, long, name, color in zip(df_cult_ven['Venue_Latitude'],
     ).add_to(m)
 
 m
+
+
+# In[35]:
+
+
+# K-means clusters to find segments of cultural sights of Budapest
+
+# Creating dataframe for clustering 
+df_clust = df_cult_ven >> select(X.likes, X.tipCount, X.rating)
+df_clust = df_clust.fillna(np.nanmedian(df_clust['rating']))
+df_columns = df_clust.columns
+
+# Standardizing data to ensure that unit of dimension does not distort relative near-ness of observations
+mms = MinMaxScaler()
+df_clust = mms.fit_transform(df_clust)
+df_clust = pd.DataFrame(df_clust, columns=df_columns)
+
+# Running K-means clusters
+clusters_range = [2,3,4,5,6,7,8,9,10,11,12,13,14]
+inertias =[] 
+for c in clusters_range:
+    kmeans = KMeans(n_clusters=c, random_state=0).fit(df_clust)
+    inertias.append(kmeans.inertia_)
+plt.figure()
+plt.plot(clusters_range,inertias, marker='o')
+
+
+# In[36]:
+
+
+# Running K-means cluster on the encoded dataframe with 3 clusters based on elbow method
+kmens = KMeans(n_clusters=4, random_state=0).fit(df_clust)
+
+# Adding cluster variable to dataframe df_cult_ven
+df_cult_ven['Clusters'] = kmens.labels_
+
+# Investigating the cluster characterestics
+df_cult_ven >> group_by(X.Clusters) >> summarize(mean_likes=mean(X.likes), mean_tipCount=mean(X.tipCount), mean_rating=mean(X.rating))
+
+
+# <b>Cluster1</b>: Rarely liked places with low recommendation and rating <br/>
+# <b>Cluster2</b>: Frequently liked places with high reccomendation and rating <br/>
+# <b>Cluster3</b>: Most frequently liked places with very high recommendation and rating <br/>
+# <b>Cluster4</b>: Less frequently liked places with low number of recommendation but fairly good rating <br/>
+
+# In[39]:
+
+
+#Adding cluster color to df
+color_theme_clust = {'gray': 0,
+                     'blue': 1,
+                     'red': 2,
+                     'green': 3}
+
+
+color_dict_clast = pd.DataFrame.from_dict(color_theme_clust, orient='index')
+color_dict_clast = color_dict_clast.reset_index()
+color_dict_clast = color_dict_clast.rename(columns={"index": "Cluster_Colors", 0: "Clusters"})
+color_dict_clast
+
+df_cult_ven = df_cult_ven.reset_index(drop=True)
+#df_cult_ven = df_cult_ven >> drop(X.Cluster_Colors)
+df_cult_ven = df_cult_ven >> left_join(color_dict_clast, by='Clusters')
+df_cult_ven            
+                 
+
+
+# In[40]:
+
+
+# Marking sights by cluster membership
+
+m = folium.Map(
+    location=[47.498333, 19.040833],
+    zoom_start=12
+)
+
+for lat, long, name, color in zip(df_cult_ven['Venue_Latitude'],
+                                           df_cult_ven['Venue_Longitude'],
+                                           df_cult_ven['Venue'],
+                                           df_cult_ven['Cluster_Colors']):
+    
+    folium.Marker(
+        location=[lat, long],
+        popup=name,
+        icon=folium.Icon(color=color)
+    ).add_to(m)
+
+m
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
