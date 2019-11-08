@@ -87,6 +87,11 @@ https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Code/Budapest_Cul
 2. Since most of the cultural sights situated in the inner city of Pest and Buda, concentrating on these areas is important, that should cover maintainance of roads, renovation/conservation of historic building and providing welcoming environment (tidy and clean places) should be a priority.<br/>
 3. Distant institutions, places and sights get little attention. Public transportation and advertisement should be improved to connect these places to the centre making them benefit better from tourism. In that regard, sights from cluster 4 falling far from the city centre could be the centre of interest to find out there potential in attracting some attention. <br/>
 #### Recommendations regarding future analysis
-1. Adding data coming from other services beside Foursquare would be important to balance, contrast and compare the results regarding popularity. Also, official data about the number of visitors would be a great addition to the analysis.
-2. Validating that venues belongs to the given neighbourhood and clusters should be recognized as being of paramount importance.
-3. Adding traffic data may explain some assumption of the analysis, especially in connection with the access to the less frequently liked and recommended places. 
+1. Adding data coming from other services beside Foursquare would be important to balance, contrast and compare the results regarding popularity. Also, official data about the number of visitors would be a great addition to the analysis.<br/>
+2. Validating that venues belongs to the given neighbourhood and clusters should be recognized as being of paramount importance.<br/>
+3. Adding traffic data may explain some assumption of the analysis, especially in connection with the access to the less frequently liked and recommended places. <br/>
+### Conclusion 
+The analysis aimed at investigating popularity, recommendation and rating of cultural sites in Budapest in order to have better understanding of how development resources should be channelled by the capitol city's government to fulfill the goals of the new cultural policy. The data coming from Foursquare shed light on the following strategies seems feasible:
+1. Concentrating maintaining high level services at most frequently visited places
+2. Aiming resources on those areas where the concentration of cultural places high (Inner city)
+3. Connect distant places to the centre by improving public transportation and information provided.
