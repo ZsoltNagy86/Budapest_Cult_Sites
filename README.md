@@ -1,14 +1,16 @@
-# Budapest_Cult_Sites
- Analysing Foursquare data of cultural sights in Budapest
+ # Analysing popularity of cultural sights and places of Budapest
+ 
 
 ## Business problem/Introduction (fictional)
 ### Commissioned by: 
 Central Government of Capital City, Budapest
-### Need Assessment:
-In connection with the new cultural policy directives, the study aims at the investigation of cultural sights in Budapest. For the more efficient usage of development resources, it is necessary to have an insight into the popularity of cultural sights and institutions in Budapest. With that resources detailed plans can be set: 
-1. Identifying the most freqently visited categories/areas/places for maintaining high quality services
-2. Identifying frequently visited places for rising awareness even further
+
+### Background/Need Assessment:
+In connection with the new cultural policy directives, the study aims at the investigation of popularity of cultural sights in Budapest. Considering the scarse resources, local government could better allocate resources if it gets an insight into how cultural sights are segmented regarding popularity. With that, detailed plans can be set: 
+1. Identifying the most freqently visited categories/areas/places for maintaining high quality services, like roads, info points, the condition of buildings, etc.
+2. Identifying frequently visited places for rising awareness of tourists and locals with media campaigns to raise visits even further
 3. Understanding the reasons why certain places are rarely visited
+4. Understanding how popularity of cultural sights are linked to their geospatial places
 
 ### Analytical plan
 #### Step 1 
@@ -42,3 +44,16 @@ Clustering based on popularity, recommendation and rating. Marking cultural plac
 <b>tipCount</b> - Number of tips for given venue</br>
 <b>rating</b> - Rating of venue	</br>
 <b>Color</b> - Colorcode for map marker by neighbourhoods</br>
+
+### Methodology
+#### Univariate analysis
+After scraping wikipedia pages for information about districts and neighbourhoods, geospatial data of districts in Budapest was added to the dataframe. 
+Using Foursquare data to find venues in Budapest made it possible to enrich the data. On that data a filter was applied in order to find cultural sights in the capitol. 
+The main dataframe was created by adding additional fields to that dataframe, that contained the number of likes, tips and average ratings coming from visitors using Foursquare. 
+The charts about the average likes, tips and ratings by the types of cultural sights are the following:<br/>
+Likes by Types of Cultural Sights: <br/>
+https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/likes_by_cat.png
+<br/>Tips by Types of Cultural Sights: <br/>
+https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/tips_by_cat.png
+<br/>Ratings by Types of Cultural Sights: <br/>
+https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/rating_by_cat.png
