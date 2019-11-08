@@ -51,9 +51,15 @@ After scraping wikipedia pages for information about districts and neighbourhood
 Using Foursquare data to find venues in Budapest made it possible to enrich the data. On that data a filter was applied in order to find cultural sights in the capitol. 
 The main dataframe was created by adding additional fields to that dataframe, that contained the number of likes, tips and average ratings coming from visitors using Foursquare. 
 The charts about the average likes, tips and ratings by the types of cultural sights are the following:<br/>
-Likes by Types of Cultural Sights: <br/>
-https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/likes_by_cat.png
+<br/>Likes by Types of Cultural Sights: <br/>
+<p align="center">
+  <img src="https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/likes_by_cat.png" width="450" title="Likes by Types of Cultural Sights">
+</p>
 <br/>Tips by Types of Cultural Sights: <br/>
-https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/tips_by_cat.png
+<p align="center">
+  <img src="https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/tips_by_cat.png" width="450" title="Tips by Types of Cultural Sights">
+</p>
 <br/>Ratings by Types of Cultural Sights: <br/>
-https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/rating_by_cat.png
+<p align="center">
+  <img src="https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/rating_by_cat.png" width="450" title="Ratings by Types of Cultural Sights">
+</p>
