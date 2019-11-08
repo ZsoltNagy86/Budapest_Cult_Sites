@@ -68,4 +68,15 @@ Starting with the bivariate analysis, the charts about the average likes, tips a
 <p align="center">
   <img src="https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/rating_by_cat.png" width="450" title="Ratings by Types of Cultural Sights">
 </p>
-Based on that, in general, it can be seen likes, tips and ratings are more or less interconnected. Having high value in one dimension makes likely to get high average value on the other dimensions as well. Also interesting that the Castle of Budapest is the most frequently liked sights, and it is highly rated and widely recommended as wel. On the contrary, Landmarks/monuments, art galleries and the History Museum got little attention (low average likes and tips) and rating. Based on that analysis, we can anticipate that we can find clusters with fairly distinct characteristics. 
+In general, it can be seen likes, tips and ratings are more or less interconnected. Having high value in one dimension makes likely to get high average value on the other dimensions as well. Also interesting that the Castle of Budapest is the most frequently liked sights, and it is highly rated and widely recommended as wel. On the contrary, Landmarks/monuments, art galleries and the History Museum got little attention (low average likes and tips) and rating. Based on that analysis, we can anticipate that we can find clusters with fairly distinct characteristics. <br/>
+After that sights were marked on the map of Budapest by neighbourhoods showing that Buda Castle, Inner City and Terézváros are the neighbourhoods where most of the cultural institutions are situated. Also, cultural sihgts are often close to each other constituted a block (e.g. neighbourhood of Ferencváros, Gubacsidűlő, József Attila-lakótelep or Buda Castle). That makes the channelling of development resources easier. <br/>
+<br/>Find the map in the notebook:<br/>
+https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Code/Budapest_Cult_Sights.ipynb
+<br/>Finally, the cluster analysis showed that there are four distinctive clusters when it comes to segment cultural sights by popularity.<br/>
+<b>Cluster1</b>: Rarely liked places with low recommendation and rating <br/>
+<b>Cluster2</b>: Frequently liked places with high reccomendation and rating <br/>
+<b>Cluster3</b>: Most frequently liked places with very high recommendation and rating <br/>
+<b>Cluster4</b>: Less frequently liked places with low number of recommendation but fairly good rating <br/>
+<br/>The cultural venues marked again on the map of Budapest, this time based on the cluster membership. The map can be found in the Notebook:<br/>
+https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Code/Budapest_Cult_Sights.ipynb
+<br/> Not surprisingly, the less frequently visited places were situated far from the city centre, while places from the other three clusters condensed close to the centre of Buda and Pest. Some sights from cluster 4 also fall far from the city centre, that may be the interest of another analysis that aims at how these places could attract more visitors than those that belonged to Cluster 1.<br/>
