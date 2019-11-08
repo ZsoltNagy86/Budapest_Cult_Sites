@@ -20,3 +20,23 @@ By using Foursquare API (PacesAPI, details endpoint), it can be investigated how
 #### Step 4 
 Marking cultural sights on the map of Budapest by neighbourhoods, adding labels with their names
 
+### Data
+#### Sources
+<b>Budapest districts and Neighbourhoods:</b> https://en.wikipedia.org/wiki/List_of_districts_in_Budapest</br>
+<b>Geospatial data:</b> https://hu.wikipedia.org/wiki/Budapest_ker%C3%BCletei</br>
+<b>Venues in districts:</b> Foursquare PacesAPI, explore endpint</br>
+<b>Popularity of venues:</b> Foursquare PacesAPI, details endpoint</br>
+
+#### Features/Variables:
+<b>Neighbourhood</b> 	- Neighbourhoods of Districts in Budapest</br>
+<b>Neighbourhood_Latitude</b> - Latitude value of given Neighbourhood</br>
+<b>Neighbourhood_Longitude</b> 	-  Longitude value of given Neighbourhood</br>
+<b>Venue_ID</b> - Venue's unique ID</br>
+<b>Venue</b> 	- Venue's name</br>
+<b>Venue_Latitude</b> - Latitude value of given Venue</br>	
+<b>Venue_Longitude</b> - Longitude value of given Venue</br>	
+<b>Venue_Category</b> - type of Venue</br>
+<b>likes</b> - Number of likes for given venue</br>
+<b>tipCount</b> - Number of tips for given venue</br>
+<b>rating</b> - Rating of venue	</br>
+<b>Color</b> - Colorcode for map marker by neighbourhoods</br>
