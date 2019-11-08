@@ -19,6 +19,8 @@ By using Foursquare API (PacesAPI, explore endpint), adding venues located in th
 By using Foursquare API (PacesAPI, details endpoint), it can be investigated how popular and recommended certain cultural venues are and what are their 
 #### Step 4 
 Marking cultural sights on the map of Budapest by neighbourhoods, adding labels with their names
+#### Step 5
+Clustering based on popularity, recommendation and rating. Marking cultural places according to cluster membership
 
 ### Data
 #### Sources
