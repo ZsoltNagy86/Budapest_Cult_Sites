@@ -39,18 +39,23 @@ Clustering based on popularity, recommendation and rating. Marking cultural plac
 <b>Venue</b> 	- Venue's name</br>
 <b>Venue_Latitude</b> - Latitude value of given Venue</br>	
 <b>Venue_Longitude</b> - Longitude value of given Venue</br>	
-<b>Venue_Category</b> - type of Venue</br>
+<b>Venue_Category</b> - type of Venue: Art Gallery, Art Museum, Castle, College Arts Building, Concert Hall, Cultural Center,     Historic Site, History Museum, Monument / Landmark, Theater</br>
 <b>likes</b> - Number of likes for given venue</br>
 <b>tipCount</b> - Number of tips for given venue</br>
 <b>rating</b> - Rating of venue	</br>
 <b>Color</b> - Colorcode for map marker by neighbourhoods</br>
 
 ### Methodology
-#### Univariate analysis
-After scraping wikipedia pages for information about districts and neighbourhoods, geospatial data of districts in Budapest was added to the dataframe. 
-Using Foursquare data to find venues in Budapest made it possible to enrich the data. On that data a filter was applied in order to find cultural sights in the capitol. 
-The main dataframe was created by adding additional fields to that dataframe, that contained the number of likes, tips and average ratings coming from visitors using Foursquare. 
-The charts about the average likes, tips and ratings by the types of cultural sights are the following:<br/>
+#### Bivariate analysis
+After scraping wikipedia pages for information about districts and neighbourhoods, geospatial data of districts in Budapest was added to the dataframe.<br/> 
+Using Foursquare data to find venues in Budapest made it possible to enrich the data. On that data a filter was applied in order to find cultural sights in the capitol city. 
+The main dataframe was created by adding additional fields to that dataframe, that contained the number of likes, tips and average ratings coming from visitors using Foursquare. <br/>
+Bivariate analysis was applied to see the distribution of likes, tips and average ratings by types of cultural sights. 
+Types of vanues were marked on the map of Budapest using Folium package. Names of vanues were also available.
+Finally, cluster analysis was run to see how cutural sights are segmented based on popularity (using likes, tips and rating fields).
+
+### Results
+Starting with the bivariate analysis, the charts about the average likes, tips and ratings by the types of cultural sights are the following:<br/>
 <br/>Likes by Types of Cultural Sights: <br/>
 <p align="center">
   <img src="https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/likes_by_cat.png" width="450" title="Likes by Types of Cultural Sights">
@@ -63,3 +68,4 @@ The charts about the average likes, tips and ratings by the types of cultural si
 <p align="center">
   <img src="https://github.com/ZsoltNagy86/Budapest_Cult_Sites/blob/master/Charts/rating_by_cat.png" width="450" title="Ratings by Types of Cultural Sights">
 </p>
+Based on that, in general, it can be seen likes, tips and ratings are more or less interconnected. Having high value in one dimension makes likely to get high average value on the other dimensions as well. Also interesting that the Castle of Budapest is the most frequently liked sights, and it is highly rated and widely recommended as wel. On the contrary, Landmarks/monuments, art galleries and the History Museum got little attention (low average likes and tips) and rating. Based on that analysis, we can anticipate that we can find clusters with fairly distinct characteristics. 
